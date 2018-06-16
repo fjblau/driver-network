@@ -11,10 +11,6 @@ EOF
 rm package.json
 mv out_package.json package.json
 
-git add *
-git commit -m "Commit version $1"
-git push -u origin master
-
 archiveFile="driver-network@$1.bna"
 
 bash ~/fabric-dev-servers/startFabric.sh
@@ -22,5 +18,9 @@ bash ~/fabric-dev-servers/startFabric.sh
 composer archive create -t dir -n .
 composer network install -c PeerAdmin@hlfv1 -a $archiveFile
 composer network start --card PeerAdmin@hlfv1 --networkAdmin admin  --networkName driver-network --networkVersion "$1" --networkAdminEnrollSecret adminpw  --file networkadmin.card
+
+git add *
+git commit -m "Commit version $1"
+git push -u origin master
 
 #composer-rest-server -c admin@driver-network -n never -w true
