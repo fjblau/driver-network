@@ -11,6 +11,10 @@ EOF
 rm package.json
 mv out_package.json package.json
 
+git add *
+git commit -m "Commit version $1"
+git push -u origin master
+
 archiveFile="driver-network@$1.bna"
 
 bash ~/fabric-dev-servers/startFabric.sh
