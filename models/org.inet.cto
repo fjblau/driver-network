@@ -47,6 +47,7 @@ participant Port identified by portId {
 }
 transaction pickupContainer {
   o String portEntryEventId
+  o String transferId
   --> PortEntryCertificate portEntryCertificate
   }
 
