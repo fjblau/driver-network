@@ -27,7 +27,7 @@ asset Container identified by containerId {
   o String containerId
   o String containerStatus
   o PortEntryCertificate[] portEntryCertificate optional
-  o Transfer[] transfer
+  o Transfer[] transfer optional
 }
 
 asset Transfer identified by transferId {
