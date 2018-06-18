@@ -45,8 +45,8 @@ participant Port identified by portId {
   o String portId
 
 }
-transaction addPortEntry {
-  o String portEntryId
+transaction addPortEntryEvent {
+  o String portEntryEventId
   --> PortEntryCertificate portEntryCertificate
   }
 
