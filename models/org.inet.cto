@@ -27,8 +27,13 @@ asset Container identified by containerId {
   o String containerId
   o String containerStatus
   o PortEntryCertificate[] portEntryCertificate optional
+  o Transfer[] transfer
 }
 
+asset Transfer identified by transferId {
+  o String transferId
+  o String transferType
+}
 asset PortEntryCertificate identified by portEntryCertificateId {
   o String portEntryCertificateId
   --> Driver driver
@@ -36,16 +41,11 @@ asset PortEntryCertificate identified by portEntryCertificateId {
   --> Port port
 }
 
-asset PortEntryEvent identified by portEntryEventId {
-  o String portEntryEventId
-  --> PortEntryCertificate portEntryCertificate
-}
-
 participant Port identified by portId {
   o String portId
 
 }
-transaction addPortEntryEvent {
+transaction pickupContainer {
   o String portEntryEventId
   --> PortEntryCertificate portEntryCertificate
   }
