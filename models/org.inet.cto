@@ -23,28 +23,22 @@ participant Driver identified by driverId {
   o String driverStatus
 }
 
-asset ContainerForPickup identified by containerId {
+asset Container identified by containerId {
   o String containerId
   o String containerStatus
-}
-
-asset PickupAuth identified by authId {
-  o String authId
-  --> ContainerForPickup containerForPickup
-  --> Driver driver
+  o PortEntryCertificate[] portEntryCertificate optional
 }
 
 asset PortEntryCertificate identified by portEntryCertificateId {
   o String portEntryCertificateId
   --> Driver driver
-  --> ContainerForPickup container
+  --> Container container
   --> Port port
 }
 
-asset PortEntry identified by portEntryId {
-  o String portEntryId
+asset PortEntryEvent identified by portEntryEventId {
+  o String portEntryEventId
   --> PortEntryCertificate portEntryCertificate
-  --> PickupAuth pickupAuth
 }
 
 participant Port identified by portId {
@@ -54,7 +48,6 @@ participant Port identified by portId {
 transaction addPortEntry {
   o String portEntryId
   --> PortEntryCertificate portEntryCertificate
-  --> PickupAuth pickupAuth
   }
 
 /**
