@@ -18,6 +18,10 @@
 
 namespace org.inet
 
+event errorMsg {
+  o String errMsg
+}
+
 participant Driver identified by driverId {
   o String driverId
   o String driverStatus
